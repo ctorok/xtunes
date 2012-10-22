@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: artists
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  dob        :datetime
+#  photo      :string(255)
+#  bio        :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  dob: 2012-10-22 13:15:55
+  photo: MyString
+  bio: MyText
+
+two:
+  name: MyString
+  dob: 2012-10-22 13:15:55
+  photo: MyString
+  bio: MyText

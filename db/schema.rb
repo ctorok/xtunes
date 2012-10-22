@@ -13,23 +13,9 @@
 
 ActiveRecord::Schema.define(:version => 20121022171555) do
 
-  create_table "artists", :force => true do |t|
-    t.string   "name"
-    t.datetime "dob"
-    t.string   "photo"
-    t.text     "bio"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "songs", :force => true do |t|
     t.string   "name"
-    t.integer  "rating"
-    t.boolean  "is_favorite"
-    t.float    "price"
-    t.string   "photo"
-    t.string   "lyrics"
-    t.string   "audio"
+    t.decimal  "price"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

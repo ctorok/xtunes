@@ -8,11 +8,12 @@ gem 'rails', '3.2.8'
 gem 'pg'
 gem 'annotate'
 gem 'pry'
+gem 'pry-nav'
 gem 'pry-rails'
 gem 'carrierwave'
 gem "fog", "~> 1.6.0"
 gem 'foreman'
-gem 'aws-s3'
+gem 'thin'
 
 
 # Gems used only for assets and not required

@@ -3,7 +3,7 @@ class SongsController < ApplicationController
   def create
   @song = Song.new(params[:song])
     if @song.save
-      redirect_to songs_path, notice: 'song was successfully created.'
+      redirect_to songs_path
     else
        render action: "new"
     end
@@ -34,7 +34,7 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
       if @song.update_attributes(params[:song])
-        redirect_to songs_path, notice: 'song was successfully updated.' 
+        redirect_to songs_path 
       else
         render action: "edit" 
       end

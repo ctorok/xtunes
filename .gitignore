@@ -14,8 +14,14 @@
 /log/*.log
 /tmp
 
+#Ignore anything in /test
+/test
+
 #Ignore rvmrc file
 .rvmrc
 
 # Ignore public/uploads directory
 public/uploads
+
+# Ignore procfile
+Procfile

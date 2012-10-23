@@ -11,6 +11,7 @@ gem 'pry'
 gem 'pry-rails'
 gem 'carrierwave'
 gem "fog", "~> 1.6.0"
+gem 'foreman'
 
 
 # Gems used only for assets and not required

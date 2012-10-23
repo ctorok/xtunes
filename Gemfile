@@ -10,7 +10,7 @@ gem 'annotate'
 gem 'pry'
 gem 'pry-rails'
 gem 'carrierwave'
-
+gem "fog", "~> 1.6.0"
 
 
 # Gems used only for assets and not required

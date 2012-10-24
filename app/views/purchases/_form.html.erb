@@ -16,12 +16,14 @@
     <%= f.text_field :price_paid %>
   </div>
   <div class="field">
-    <%= f.label :Song %><br />
-    <%= f.text_field :song_id %>
+    <%= f.label :select_song %><br />
+ <%= f.select :song_id, Song.all.map{|s| [s.name, s.id]} %>
+
   </div>
 <div class="field">
-    <%= f.label :User %><br />
-    <%= f.text_field :user_id %>
+    <%= f.label :select_user %><br />
+ <%= f.select :user_id, User.all.map{|u| [u.name, u.id]} %>
+
   </div>
 
   <div class="actions">

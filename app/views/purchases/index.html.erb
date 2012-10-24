@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Song</th>
-    <th>User</th>
+    <th>Song name</th>
+    <th>Purchased by: User</th>
     <th>Price Paid</th>
  
     <th></th>
@@ -13,8 +13,11 @@
 
 <% @purchases.each do |purchase| %>
   <tr>
-    <td><%= purchase.song_id %></td>
-    <td><%= purchase.user_id %></td>
+
+    <% s=Song.find(purchase.song_id) %>
+    <td><%= s.name %></td>
+     <% u=User.find(purchase.user_id) %>
+    <td><%= u.name %></td>
      <td><%= purchase.price_paid %></td>
   
     <td><%= link_to 'Show', purchase %></td>

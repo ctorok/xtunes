@@ -2,16 +2,12 @@
 #
 # Table name: songs
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  rating      :integer
-#  is_favorite :boolean
-#  price       :float
-#  photo       :string(255)
-#  lyrics      :string(255)
-#  audio       :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  price      :decimal(, )
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  audiofile  :string(255)
 #
 
 require 'test_helper'

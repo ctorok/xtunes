@@ -27,9 +27,9 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.new
   end
 
-  # def show
-  #   @song = Song.find(params[:id])
-  # end
+  def show
+    @purchase = Purchase.find(params[:id])
+  end
 
   # def update
   #   @song = Song.find(params[:id])

@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  audiofile  :string(255)
+#  album_id   :string(255)
 #
 
 require 'test_helper'

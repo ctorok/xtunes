@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Price paid:</b>
+  <%= @purchase.price_paid %>
+</p>
+
+<p>
+  <b>User:</b>
+
+
+  <%= User.find(@purchase.user_id).name %>
+</p>
+
+<p>
+  <b>Song:</b>
+    <td><%= Song.find(@purchase.song_id).name %></td>
+</p>
+
+<p>
+  <b>Album:</b>
+    <td>tbd</td>
+</p>
+
+
+<%= link_to 'Edit', edit_purchase_path(@purchase) %> |
+<%= link_to 'Back', purchases_path %>

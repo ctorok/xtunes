@@ -2,6 +2,7 @@ Xtunes::Application.routes.draw do
   resources :posts
   resources :songs
   resources :users
+  resources :purchases
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

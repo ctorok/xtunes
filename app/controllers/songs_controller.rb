@@ -34,7 +34,7 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
       if @song.update_attributes(params[:song])
-        redirect_to songs_path 
+        redirect_to songs_path #removed :notice
       else
         render action: "edit" 
       end

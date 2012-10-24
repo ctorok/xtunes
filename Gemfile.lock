@@ -147,11 +147,10 @@ DEPENDENCIES
   annotate
   carrierwave
   coffee-rails (~> 3.2.1)
-  fog (~> 1.6.0)
+  fog
   foreman
   jquery-rails
   pg
-  pry
   pry-nav
   pry-rails
   rails (= 3.2.8)

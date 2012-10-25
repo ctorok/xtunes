@@ -24,6 +24,20 @@
     <%= f.label :year_released %><br />
     <%= f.text_field :year %>
   </div>
+    <div class="field">
+    <%= f.label :genre_select_one_or_more %><br />
+
+
+  <ul>
+    <% g = Genre.all%>
+  <% g.each do |genre| %>
+      <li>
+        <%= check_box_tag 'genre_ids[]', genre.id -%>
+        <%= h genre.name -%>
+      </li>
+  <% end %>
+</ul>
+  </div>
 
 
   <div class="actions">

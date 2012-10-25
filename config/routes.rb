@@ -1,5 +1,5 @@
 Xtunes::Application.routes.draw do
-  resources :posts
+  # resources :posts
   resources :songs
   resources :users
   resources :purchases

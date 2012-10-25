@@ -5,9 +5,9 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  photo      :string(255)
-#  year       :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  year       :integer
 #
 
 class Album < ActiveRecord::Base

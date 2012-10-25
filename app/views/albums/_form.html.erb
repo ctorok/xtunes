@@ -32,8 +32,9 @@
     <% g = Genre.all%>
   <% g.each do |genre| %>
       <li>
-        <%= check_box_tag 'genre_ids[]', genre.id -%>
-        <%= h genre.name -%>
+        <%= check_box_tag 'genre_ids[]', genre.id %>
+        <%= h genre.name %>
+     
       </li>
   <% end %>
 </ul>

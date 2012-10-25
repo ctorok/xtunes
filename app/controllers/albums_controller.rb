@@ -2,6 +2,11 @@ class AlbumsController < ApplicationController
   
   def create
   @album = Album.new(params[:album])
+
+# @album.genres = (params[:genres].present? ? params[:genres] : [])
+
+
+
     if @album.save
       redirect_to albums_path
     else
@@ -21,6 +26,7 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.all
+    
   end
 
   def new

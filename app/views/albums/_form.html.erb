@@ -29,11 +29,12 @@
 
 
   <ul>
-    <% g = Genre.all%>
-  <% g.each do |genre| %>
+
+  <% Genre.all.each do |genre| %>
       <li>
-        <%= check_box_tag 'genre_ids[]', genre.id %>
-        <%= h genre.name %>
+        <%= check_box_tag 'genre_ids[]', genre.id, @album.genres.compact.include?(genre)  %>
+
+        <%= genre.name %>
      
       </li>
   <% end %>

@@ -8,13 +8,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  audiofile  :string(255)
-#  album_id   :string(255)
 #
 
 class Song < ActiveRecord::Base
   has_many :users, :through => :purchases
-  has_many :artists
-  belongs_to :album
+  has_and_belongs_to_many :artists
+  has_and_belongs_to_many :albums
   attr_accessible :name, :price, :audiofile, :album_id
   mount_uploader :audiofile, AudiofileUploader
 end

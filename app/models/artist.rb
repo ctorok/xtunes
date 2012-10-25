@@ -9,10 +9,9 @@
 #  bio        :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  album_id   :string(255)
 #
 
 class Artist < ActiveRecord::Base
-  belongs_to :album
+  has_many :albums
   attr_accessible :bio, :dob, :name, :photo, :album_id
 end

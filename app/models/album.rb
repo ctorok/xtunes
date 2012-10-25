@@ -12,5 +12,6 @@
 
 class Album < ActiveRecord::Base
   has_many :artists
+  has_many :genres
   attr_accessible :name, :photo, :year
 end

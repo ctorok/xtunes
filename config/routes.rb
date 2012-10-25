@@ -4,6 +4,9 @@ Xtunes::Application.routes.draw do
   resources :users
   resources :purchases
   resources :artists
+  resources :albums
+  resources :genres
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

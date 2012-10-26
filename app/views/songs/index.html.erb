@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Artist</th>
     <th>Album</th>
     <th>Price</th>
  
@@ -14,7 +15,21 @@
 <% @songs.each do |song| %>
   <tr>
     <td><%= song.name %></td>
-    <td> missing info</td>
+
+
+    <td>
+      <% song.artists.each do |a|%>
+        <%= a.name %>
+      <% end %>
+    </td>
+
+<td>
+      <% song.albums.each do |a|%>
+        <%= a.name %>
+      <% end %>
+    </td>
+
+
      <td><%= song.price %></td>
 
   

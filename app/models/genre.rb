@@ -10,6 +10,6 @@
 #
 
 class Genre < ActiveRecord::Base
-  belongs_to :album
-  attr_accessible :name, :album_id
+  attr_accessible :name
+  has_many :albums
 end

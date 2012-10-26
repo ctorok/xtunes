@@ -1,8 +1,8 @@
 Xtunes::Application.routes.draw do
 
-  get 'signup', to: 'users#new', as: 'signup'
+  get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'logout' => 'sessions#destroy'
 
     match '/' => 'sessions#new', :via => :get
 

@@ -26,3 +26,5 @@ public/uploads
 # Ignore procfile
 Procfile
 .env
+
+.DS_Store

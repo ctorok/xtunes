@@ -27,10 +27,6 @@ class GenresController < ApplicationController
     @genre = Genre.new
   end
 
-  def show
-    @genre = Genre.find(params[:id])
-  end
-
   def update
     @genre = Genre.find(params[:id])
       if @genre.update_attributes(params[:genre])

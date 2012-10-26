@@ -1,7 +1,15 @@
 Xtunes::Application.routes.draw do
+
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login' => 'sessions#new'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+    match '/' => 'sessions#new', :via => :get
+
   # resources :posts
   resources :songs
   resources :users
+  resources :sessions
   resources :purchases
   resources :artists
   resources :albums

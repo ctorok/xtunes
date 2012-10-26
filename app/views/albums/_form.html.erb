@@ -25,10 +25,16 @@
     <%= f.text_field :year %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :genre %><br />
     <%= collection_select :album, :genre_ids, Genre.all, :id, :name, {}, {:multiple => true } -%>
   </div>
 
+  <div class="field">
+    <%= f.label :artist %><br />
+    <%= collection_select :album, :artist_ids, Artist.all, :id, :name, {}, {:multiple => true } -%>
+  </div>
+  
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

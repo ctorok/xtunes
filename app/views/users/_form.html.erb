@@ -21,9 +21,12 @@
   </div>
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.text_field :pwd %>
+    <%= f.password_field :pwd %>
   </div>
-
+ <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
 <div class="field">
     <%= f.label :type %><br />
     <%= f.text_field :u_type %>

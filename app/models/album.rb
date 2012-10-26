@@ -11,9 +11,9 @@
 #
 
 class Album < ActiveRecord::Base
-  attr_accessible :name, :photo, :year, :genre_ids
+  attr_accessible :name, :photo, :year, :genre_ids, :artist_ids
 
-  has_many :artists
+  has_and_belongs_to_many :artists
   has_and_belongs_to_many :genres
 
 end

@@ -3,9 +3,10 @@ class UsersController < ApplicationController
   def create
   @user = User.new(params[:user])
     if @user.save
-      redirect_to users_path
+      session[:user_id] = @user.id
+      redirect_to users_path, "You are signed in!"
     else
-       render action: "new"
+       render "new"
     end
   end
 
@@ -36,8 +37,9 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         redirect_to users_path #removed :notice
       else
-        render action: "edit" 
+        render "edit" 
       end
   end
 end
+
 

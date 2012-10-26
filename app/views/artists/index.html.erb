@@ -5,32 +5,32 @@
     <th>Name</th>
     <th>Photo</th>
     <th>Date of Birth</th>
-     <th>Bio</th>
-
+    <th>Bio</th>
+    <th>Songs</th>
 
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @artists.each do |artist| %>
-  <tr>
-    <td><%= artist.name %></td>
-    <td><%= artist.photo %></td>
-     <td><%= artist.dob %></td>
+  <% @artists.each do |artist| %>
+    <tr>
+      <td><%= artist.name %></td>
+      <td><%= artist.photo %></td>
+      <td><%= artist.dob %></td>
       <td><%= artist.bio %></td>
+       <td> <% artist.songs.each do |song| %>
+      <%=h song.name %>
+    <% end %></td>
 
+   
+      <td><%= link_to 'Show', artist %></td>
+      <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
+      <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+   
 
-  <br>
-
-
-
-  
-    <td><%= link_to 'Show', artist %></td>
-    <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-    <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% end %>
 </table>
 
 <br />

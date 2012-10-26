@@ -4,7 +4,9 @@
   <tr>
     <th>Name</th>
     <th>Year</th>
+    <th>Artist</th>
     <th>Genre</th>
+   
 
     <th></th>
     <th></th>
@@ -15,9 +17,14 @@
   <tr>
     <td><%= album.name %></td>
     <td><%= album.year %></td>
+  
     <td><% album.genres.each do |genre| %>
-      <%= genre.name %>
-    <% end %>
+          <%= genre.name %>
+        <% end %>
+    </td>
+    <td><% album.artists.each do |artist| %>
+          <%= artist.name %>
+        <% end %>
     </td>
         
     <td><%= link_to 'Show', album %></td>

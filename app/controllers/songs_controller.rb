@@ -1,4 +1,5 @@
-class SongsController < ApplicationController
+class SongsController < ApplicationController 
+  # before_filter :authorize # if I wanted only on certain defs, I would say: , only [:edit, :update]
   
   def create
   @song = Song.new(params[:song])

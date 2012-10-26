@@ -24,23 +24,10 @@
     <%= f.label :year_released %><br />
     <%= f.text_field :year %>
   </div>
-    <div class="field">
-    <%= f.label :genre_select_one_or_more %><br />
-
-
-  <ul>
-
-  <% Genre.all.each do |genre| %>
-      <li>
-        <%= check_box_tag 'genre_ids[]', genre.id, @album.genres.compact.include?(genre)  %>
-
-        <%= genre.name %>
-     
-      </li>
-  <% end %>
-</ul>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= collection_select :album, :genre_ids, Genre.all, :id, :name, {}, {:multiple => true } -%>
   </div>
-
 
   <div class="actions">
     <%= f.submit %>

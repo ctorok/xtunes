@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_path# :notice "You are signed in!"
+      redirect_to users_path, notice: "You are signed in!"
     else
        render "new"
     end
@@ -21,21 +21,18 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.order(:name)
   end
 
   def new
     @user = User.new
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
 
   def update
     @user = User.find(params[:id])
       if @user.update_attributes(params[:user])
-        redirect_to users_path #removed :notice
+        redirect_to users_path, notice: "User #{@user.name} was successfully created."
       else
         render "edit" 
       end

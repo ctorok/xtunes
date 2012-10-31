@@ -1,0 +1,64 @@
+$main-color: #03507B;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFF;
+  font-family: verdana;
+  font-size: 14px;
+}
+
+#container { 
+  margin: 0 100px; 
+}
+
+#header {
+  background-color: $main-color;
+  
+  padding: 4px 100px;
+  border-bottom: solid 5px darken($main-color,90%);
+  a {color: #FFF;}
+
+  .user_header {
+    color: white;
+  }
+
+  h1 {
+  font-size: 30px;
+  }
+}
+
+a {
+  color: $main-color;
+  text-decoration: none;
+  &:hover {
+  text-decoration: underline;
+  }
+}
+
+.nav {
+  background: rgba(3,80,123,.2);
+  padding: 5px 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.nav ul li {
+  display: inline-block;
+  color: #FFF;
+}
+
+
+.songs {
+  border: solid 1px #777;
+  margin: 20px 0;
+  padding: 7px 12px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+
+  h2 { 
+  margin: 0; 
+  }
+}

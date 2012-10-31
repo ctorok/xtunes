@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_path, "You are signed in!"
+      redirect_to users_path# :notice "You are signed in!"
     else
        render "new"
     end

@@ -26,6 +26,9 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.all
+    @artists = Artist.all
+    @songs = Song.all
+    @genres = Genre.all
     
   end
 

@@ -17,13 +17,18 @@ class SongsController < ApplicationController
   end
 
   def edit
+    # if session[:user_id].downcase != "a"
+    #   redirect_to songs_path, flash[:notice] = "Sorry, you don’t have permission to do this"
+    # end
     @song = Song.find(params[:id])
     @artists = Artist.all
   end
 
   def index
-    @songs = Song.all
-    @artists = Artist.all
+    @songs = Song.order(:name)   #get all songs, ordered alpha by name
+    @artists = Artist.order(:name)
+    @albums = Album.order(:name)
+
   end
 
   def new

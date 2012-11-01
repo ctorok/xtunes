@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  # The sessions controller handles the login, authentication action
   def index
   end
 
@@ -6,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_url
+      redirect_to root_url, notice: "Logged in."
     else
       flash.now.alert = "Email or password not valid"
       render "new"

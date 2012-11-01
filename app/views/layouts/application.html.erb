@@ -8,11 +8,10 @@
 </head>
 <body>
   <div class="container">
-  
     <div id="header">
       <h1>The xTunes world</h1>
       <div class="user_header">
-        <% if current_user %>
+        <% if current_user %> <!-- this means that the user is logged in -->
           Logged in as <%= current_user.email %>, <%= current_user.user_type %>.
           <%= link_to "Log out", logout_path %>
         <% else %>
@@ -20,22 +19,24 @@
           <%= link_to "Log In", login_path %>
         <% end %>
       </div> <!-- user_header -->
-  <% flash.each do |name, msg| %>
-    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-      <a class="close" data-dismiss="alert">×</a>
-      <%= msg %>
-    </div>
-  <% end %>
     </div> <!-- header -->
-    <div class="nav">
-      <ul >
-        <%= create_nav_item('Home', songs_path) %>
-        <%= create_nav_item('Manage Songs', songs_path) %>
-        <%= create_nav_item('Manage Genres', genres_path) %>
-        <%= create_nav_item('Manage Albums', albums_path) %>
-        <%= create_nav_item('Manage Artists', artists_path) %>
-      </ul>
-    </div> <!-- nav -->
+    <% if can? :update, :all %> <!-- only show if I have managing role -->
+      <div class="nav">
+        <ul >
+          <%= create_nav_item('Home', songs_path) %>
+          <%= create_nav_item('Manage Songs', songs_path) %>
+          <%= create_nav_item('Manage Genres', genres_path) %>
+          <%= create_nav_item('Manage Albums', albums_path) %>
+          <%= create_nav_item('Manage Artists', artists_path) %>
+        </ul>
+      </div> <!-- nav -->
+    <% end %>
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= msg %>
+      </div>
+    <% end %>
     <div class="row">
       <div class="span1">&nbsp;</div>
       <div class="span11"><%= yield %></div>

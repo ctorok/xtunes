@@ -4,7 +4,7 @@ Xtunes::Application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
-    match '/' => 'sessions#new', :via => :get
+  match '/' => 'sessions#index'
 
   # resources :posts
   resources :songs

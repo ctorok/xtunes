@@ -36,7 +36,7 @@
           <td><%= link_to 'Edit', edit_song_path(song) %></td>
           <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
          <% end %>
-        <td><%= link_to 'Purchase', song %></td>
+        <td><%= button_to 'Purchase', purchases_path(song_id: song) %></td>
       </tr>
     <% end %>
   </table>

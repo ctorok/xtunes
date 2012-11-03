@@ -14,6 +14,6 @@ class Purchase < ActiveRecord::Base
   attr_accessible :price_paid, :song_id, :user_id
   belongs_to :user #will have its ID
   belongs_to :song #will have its ID
-  validates :price_paid, :numericality => true
+  # validates :price_paid, :numericality => true
 
 end

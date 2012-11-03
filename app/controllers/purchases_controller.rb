@@ -1,9 +1,15 @@
 class PurchasesController < ApplicationController
   
   def create
-  @purchase = Purchase.new(params[:purchase])
+   @purchase = Purchase.new(params[:purchase])
+   # raise params.inspect
+   @purchase.price_paid = Song.find(params[:song_id]).price
+   @purchase.user_id = session[:user_id]
+   @purchase.song_id = params[:song_id]
+   # raise @purchase.inspect
+
     if @purchase.save
-      redirect_to purchases_path
+      redirect_to songs_path, :notice => "Song '#{Song.find(params[:song_id]).name}' was successfully purchased."
     else
        render action: "new"
     end
@@ -15,9 +21,9 @@ class PurchasesController < ApplicationController
   #     redirect_to songs_path
   # end
 
-  # def edit
-  #   @song = Song.find(params[:id])
-  # end
+  def edit
+    @purchase = Purchase.find(params[:id])
+  end
 
   def index
     @purchases = Purchase.all
@@ -31,13 +37,13 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.find(params[:id])
   end
 
-  # def update
-  #   @song = Song.find(params[:id])
-  #     if @song.update_attributes(params[:song])
-  #       redirect_to songs_path #removed :notice
-  #     else
-  #       render action: "edit" 
-  #     end
-  # end
+  def update
+    @purchase = Purchase.find(params[:id])
+      if @purchase.update_attributes(params[:purchase])
+        redirect_to purchases_path #removed :notice
+      else
+        render action: "edit" 
+      end
+  end
 end
 

@@ -7,12 +7,20 @@ class PurchasesController < ApplicationController
    @purchase.user_id = session[:user_id]
    @purchase.song_id = params[:song_id]
    # raise @purchase.inspect
+   #check if exists in the table
+   @u = Purchase.where("user_id = ?", session[:user_id])
+   @s = Purchase.where("song_id = ?", params[:song_id])
 
-    if @purchase.save
-      redirect_to songs_path, :notice => "Song '#{Song.find(params[:song_id]).name}' was successfully purchased."
-    else
-       render action: "new"
-    end
+   raise @u.inspect
+
+   if (@u == @purchase.user_id) && (@s == @purchase.song_id)
+    then
+     redirect_to songs_path, :notice => "You have already purchased '#{Song.find(params[:song_id]).name}'!"
+    elsif @purchase.save 
+      redirect_to songs_path, :notice => "You purchased '#{Song.find(params[:song_id]).name}'."
+      else
+         render action: "new"
+      end
   end
 
   # def destroy
@@ -28,6 +36,13 @@ class PurchasesController < ApplicationController
   def index
     @purchases = Purchase.all
   end
+
+  def mylist
+   @purchases = Purchase.where("user_id = ?", session[:user_id])
+   # raise @purchases.inspect
+   render action: "mylist"
+  end
+
 
   def new
     @purchase = Purchase.new

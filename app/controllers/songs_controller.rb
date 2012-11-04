@@ -26,15 +26,12 @@ class SongsController < ApplicationController
   end
 
   def edit
-    # if session[:user_id].downcase != "a"
-    #   redirect_to songs_path, flash[:notice] = "Sorry, you don’t have permission to do this"
-    # end
     @artists = Artist.all
   end
 
   def destroy
     @song.destroy
-      redirect_to songs_path
+    redirect_to songs_path
   end
 
   def update

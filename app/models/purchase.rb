@@ -4,10 +4,10 @@
 #
 #  id         :integer          not null, primary key
 #  price_paid :decimal(, )
-#  user_id    :string(255)
-#  song_id    :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  song_id    :integer
+#  user_id    :integer
 #
 
 class Purchase < ActiveRecord::Base

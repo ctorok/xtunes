@@ -20,29 +20,35 @@
         <% end %>
       </div> <!-- user_header -->
     </div> <!-- header -->
-
-    
+    <% if can? :update, :all %> <!-- only show if I have managing role -->
+      <div class="nav">
+        <ul >
+          <%= create_nav_item('Home', songs_path) %>
+          <%= create_nav_item('Manage Songs', songs_path) %>
+          <%= create_nav_item('Manage Genres', genres_path) %>
+          <%= create_nav_item('Manage Albums', albums_path) %>
+          <%= create_nav_item('Manage Artists', artists_path) %>
+        </ul>
+      </div> <!-- nav -->
+    <% end %> <!-- end the if -->
+      <% if can? :update, :songs %> <!-- only show if I can edit songs -->
         <div class="nav">
           <ul >
             <%= create_nav_item('Home', songs_path) %>
-            <%= link_to('My List', mylist_purchase_path(current_user)) %>
+            <%= create_nav_item('List My Songs', mylist_purchases_path) %>
             <%= create_nav_item('Purchase Songs', songs_path) %>
           </ul>
         </div> <!-- nav -->
-
-
-    <% if can? :update, :all %> <!-- only show if I have managing role -->
+      <% end %> <!-- end the if -->
+      <% if can? :read, :all %> <!-- only show to guests, the songs -->
         <div class="nav">
           <ul >
-            <%= create_nav_item('Home', songs_path) %> |
-            <%= create_nav_item('Manage Songs', songs_path) %> |
-            <%= create_nav_item('Manage Genres', genres_path) %> |
-            <%= create_nav_item('Manage Albums', albums_path) %> |
-            <%= create_nav_item('Manage Artists', artists_path) %> |
-            <%= link_to('My List', mylist_purchase_path(current_user)) %>
+            <%= create_nav_item('Home', songs_path) %>
+            <%= create_nav_item('List Songs', songs_path) %>
+             <%= create_nav_item('List My Songs', mylist_purchases_path) %>
           </ul>
         </div> <!-- nav -->
-    <% end %> <!-- end the if -->
+      <% end %> <!-- end the if -->
 
 
 

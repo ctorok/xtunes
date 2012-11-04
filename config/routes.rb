@@ -11,6 +11,9 @@ Xtunes::Application.routes.draw do
   resources :users
   resources :sessions
   resources :purchases
+  resources :purchases do
+     get 'mylist', :on => :member
+  end
   resources :artists
   resources :albums
   resources :genres

@@ -43,11 +43,12 @@ a {
   margin: 10px 0;
   font-size: 16px;
   border-radius: 5px;
-}
 
-.nav ul li {
+
+  ul li {
   display: inline-block;
   color: #FFF;
+}
 }
 
 
@@ -56,10 +57,11 @@ a {
   margin: 20px 0;
   padding: 7px 12px;
   border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
 
   h2 { 
   margin: 0; 
   }
+
+  td {padding-right: 10px;}
+  th {padding-right: 130px;}
 }

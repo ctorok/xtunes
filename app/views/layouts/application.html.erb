@@ -25,7 +25,7 @@
         <div class="nav">
           <ul >
             <%= create_nav_item('Home', songs_path) %>
-            <%= link_to('My List', mylist_purchase_path(current_user)) %>
+            <%= link_to('My List', purchase_path(current_user)) %>
             <%= create_nav_item('Purchase Songs', songs_path) %>
           </ul>
         </div> <!-- nav -->
@@ -39,7 +39,7 @@
             <%= create_nav_item('Manage Genres', genres_path) %> |
             <%= create_nav_item('Manage Albums', albums_path) %> |
             <%= create_nav_item('Manage Artists', artists_path) %> |
-            <%= link_to('My List', mylist_purchase_path(current_user)) %>
+            <%= link_to('My List', purchase_path(current_user)) %>
           </ul>
         </div> <!-- nav -->
     <% end %> <!-- end the if -->

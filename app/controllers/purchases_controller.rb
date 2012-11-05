@@ -1,26 +1,16 @@
 class PurchasesController < ApplicationController
-  
+
   def create
-   @purchase = Purchase.new(params[:purchase])
-   # raise params.inspect
-   @purchase.price_paid = Song.find(params[:song_id]).price
-   @purchase.user_id = session[:user_id]
-   @purchase.song_id = params[:song_id]
-   # raise @purchase.inspect
-   #check if exists in the table
-   @u = Purchase.where("user_id = ?", session[:user_id])
-   @s = Purchase.where("song_id = ?", params[:song_id])
-
-   raise @u.inspect
-
-   if (@u == @purchase.user_id) && (@s == @purchase.song_id)
-    then
-     redirect_to songs_path, :notice => "You have already purchased '#{Song.find(params[:song_id]).name}'!"
-    elsif @purchase.save 
+    @purchase = Purchase.new(params[:purchase])
+    # raise params.inspect
+    @purchase.price_paid = Song.find(params[:song_id]).price
+    @purchase.user_id = session[:user_id]
+    @purchase.song_id = params[:song_id]
+    if @purchase.save 
       redirect_to songs_path, :notice => "You purchased '#{Song.find(params[:song_id]).name}'."
-      else
-         render action: "new"
-      end
+    else
+      render action: "new"
+    end
   end
 
   # def destroy
@@ -60,5 +50,6 @@ class PurchasesController < ApplicationController
         render action: "edit" 
       end
   end
+
 end
 

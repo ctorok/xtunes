@@ -4,9 +4,9 @@
 
   <table>
     <tr>
-      <th>Name | </th> 
-      <th>Artist | </th> 
-      <th>Album | </th> 
+      <th>Name</th> 
+      <th>Artist</th> 
+      <th>Album</th> 
       <th>Price</th>
       <th></th>
       <th></th>
@@ -16,29 +16,28 @@
 </div>
     <div class="songs">
       <table>
-
-    <% @songs.each do |song| %>
-      <tr>
-        <td><%= song.name %></td>
-        <td>
-          <% song.artists.each do |a|%>
-          <%= a.name %>
-          <% end %>
-        </td>
-        <td>
-          <% song.albums.each do |a|%>
-          <%= a.name %>
-          <% end %>
-        </td>
-        <td><%= song.price %></td>
-        <td><%= link_to 'Show', song %></td>
-        <% if can? :update, @song %>
-          <td><%= link_to 'Edit', edit_song_path(song) %></td>
-          <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-         <% end %>
-        <td><%= button_to 'Purchase', purchases_path(song_id: song) %></td>
-      </tr>
-    <% end %>
+        <% @songs.each do |song| %>
+          <tr>
+            <td><%= song.name %></td>
+            <td>
+              <% song.artists.each do |a|%>
+              <%= a.name %>
+              <% end %>
+            </td>
+            <td>
+              <% song.albums.each do |a|%>
+              <%= a.name %>
+              <% end %>
+            </td>
+            <td><%= song.price %></td>
+            <td><%= link_to 'Show', song %></td>
+            <% if can? :update, @song %>
+              <td><%= link_to 'Edit', edit_song_path(song) %></td>
+              <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+            <td><%= button_to 'Purchase', purchases_path(song_id: song) %></td>
+          </tr>
+        <% end %>
   </table>
   <br />
 </div>

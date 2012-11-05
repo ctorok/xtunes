@@ -1,4 +1,9 @@
-<h1>Listing purchases</h1>
+<% if !current_user %>
+  <h1>Listing purchases</h1>
+  <% else %>
+  <h1>My purchases</h1>
+<% end %>
+
 
 <table>
   <tr>
@@ -15,15 +20,11 @@
   <tr>
 
     <% s=Song.find(purchase.song_id) %>
-
     <td><%= s.name %></td>
     
-
-
      <% u=User.find(purchase.user_id) %>
-
+     <td><%= u.name %></td>
      
-    <td><%= u.name %></td>
      <td><%= purchase.price_paid %></td>
   
     <td><%= link_to 'Show', purchase %></td>

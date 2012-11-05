@@ -6,14 +6,10 @@ Xtunes::Application.routes.draw do
 
   match '/' => 'sessions#index'
 
-  # resources :posts
   resources :songs
   resources :users
   resources :sessions
   resources :purchases
-  # resources :purchases do
-  #    get 'mylist', :on => :member
-  # end
   resources :artists
   resources :albums
   resources :genres

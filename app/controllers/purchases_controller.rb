@@ -24,17 +24,14 @@ class PurchasesController < ApplicationController
   end
 
   def index
-    @purchases = Purchase.all
+    if !current_user
+      @purchases = Purchase.all
+    else
+      @purchases = Purchase.where("user_id = ?", session[:user_id])
+    end
   end
 
-  def mylist
-   @purchases = Purchase.where("user_id = ?", session[:user_id])
-   # raise @purchases.inspect
-   render action: "mylist"
-  end
-
-
-  def new
+ def new
     @purchase = Purchase.new
   end
 

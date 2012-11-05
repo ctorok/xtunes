@@ -1,6 +1,12 @@
-
 <div class="songs">
-  <h1>Songs</h1>
+  <!-- There will be two types of listings. One for the admin and guest, with ALL songs, and one for the logged in user, who will see all songs MINUS the ones they purchased -->
+
+<% if !current_user %>
+  <h1>Listing all songs</h1>
+  <% else %>
+  <h1>Songs I can purchase</h1>
+<% end %>
+
 
   <table>
     <tr>

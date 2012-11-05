@@ -6,8 +6,17 @@ class SongsController < ApplicationController
   
   def index
     @songs = Song.order(:name)   #get all songs, ordered alpha by name
-    @artists = Artist.order(:name)
-    @albums = Album.order(:name)
+    # @artists = Artist.order(:name)
+    # @albums = Album.order(:name)
+    if current_user
+      #get user's purchased songs, only the ids
+      p = Purchase.where("user_id = ?", session[:user_id]).collect(&:song_id)
+       # raise p.inspect
+      songs_table = Arel::Table.new(:songs)
+      # the below will have the songs that the user has not purchased!
+      @songs = Song.where(songs_table[:id].not_in p)
+      # raise @songs.inspect
+    end
   end
 
   def show

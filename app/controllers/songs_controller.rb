@@ -5,10 +5,12 @@ class SongsController < ApplicationController
   # if I wanted only on certain defs, I would say: , only [:edit, :update]
   
   def index
-    @songs = Song.order(:name)   #get all songs, ordered alpha by name
+    
     # @artists = Artist.order(:name)
     # @albums = Album.order(:name)
-    if current_user
+    # raise current_user.inspect
+
+    if current_user && current_user.user_type != "A"
       #get user's purchased songs, only the ids
       p = Purchase.where("user_id = ?", session[:user_id]).collect(&:song_id)
        # raise p.inspect
@@ -16,6 +18,8 @@ class SongsController < ApplicationController
       # the below will have the songs that the user has not purchased!
       @songs = Song.where(songs_table[:id].not_in p)
       # raise @songs.inspect
+    elsif current_user && current_user.user_type = "A"
+      @songs = Song.order(:name)   #get all songs, ordered alpha by name
     end
   end
 

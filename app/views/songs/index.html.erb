@@ -37,8 +37,7 @@
             </td>
             <td><%= song.price %></td>
             
-              <td><%= audio_tag song.audiofile, :controls => true %>
-              </td>
+              <td><%= audio_tag song.audiofile, :controls => true %></td>
             
 
 
@@ -49,7 +48,7 @@
               <td><%= link_to 'Edit', edit_song_path(song) %></td>
               <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
-            <td><%= button_to 'Purchase', purchases_path(song_id: song) %></td>
+            <td><%= button_to 'Purchase', purchases_path(song_id: song), :class => "btn" %></td>
           </tr>
         <% end %>
   </table>

@@ -11,7 +11,8 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'thin'
 gem 'cancan'
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
+gem 'sass-twitter-bootstrap-rails', '~> 1.0.2'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

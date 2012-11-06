@@ -1,7 +1,7 @@
 <div class="songs">
   <!-- There will be two types of listings. One for the admin and guest, with ALL songs, and one for the logged in user, who will see all songs MINUS the ones they purchased -->
 
-<% if !current_user %>
+<% if !current_user || current_user.user_type == "A"%>
   <h1>Listing all songs</h1>
   <% else %>
   <h1>Songs I can purchase</h1>
@@ -36,6 +36,14 @@
               <% end %>
             </td>
             <td><%= song.price %></td>
+            
+              <td style="border: 1px black dotted;"><%= audio_tag song.audiofile, :controls => true %>
+              </td>
+            
+
+
+
+
             <td><%= link_to 'Show', song %></td>
             <% if can? :update, @song %>
               <td><%= link_to 'Edit', edit_song_path(song) %></td>

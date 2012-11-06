@@ -6,14 +6,16 @@ body {
   background-color: #FFF;
   font-family: verdana;
   font-size: 12px;
+  width: 1200px;
 }
 
 #container { 
-  margin: 0 100px; 
+  margin: 5px 0 0 100px; 
 }
 
 #header {
   background-color: $main-color;
+  border-radius: 5px;
   
   padding: 4px 100px;
   border-bottom: solid 5px darken($main-color,80%);
@@ -64,4 +66,20 @@ a {
 
   td {padding-right: 10px;}
   th {padding-right: 130px;}
+}
+
+.player {
+    display: block;
+    position: absolute;
+    -webkit-box-shadow: 0 -1px 0 rgba(20, 30, 40, .75);
+    -moz-box-shadow: 0 -1px 0 rgba(20, 30, 40, .75);
+    -o-box-shadow: 0 -1px 0 rgba(20, 30, 40, .75);
+    box-shadow: 0 -1px 0 rgba(20, 30, 40, .75);
+    border-top: 1px solid #C2CBD4;
+    border-bottom: 1px solid #283541;
+    background: #939EAA;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(174, 185, 196, .9)), to(rgba(110, 124, 140, .9)), color-stop(.5, rgba(152, 164, 176, .9)),color-stop(.501, rgba(132, 145, 159, .9)));
+    background: -moz-linear-gradient(top, rgba(174, 185, 196, .9), rgba(152, 164, 176, .9) 50%, rgba(132, 145, 159, .9) 50.1%, rgba(110, 124, 140, .9));
+    background: linear-gradient(top, rgba(174, 185, 196, .9), rgba(152, 164, 176, .9) 50%, rgba(132, 145, 159, .9) 50.1%, rgba(110, 124, 140, .9));
+    cursor: default;
 }

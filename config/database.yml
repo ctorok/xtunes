@@ -24,7 +24,7 @@ test:
 
 production:
   adapter: postgresql
-  database: xtunes_prod
+  database: xtunes_prod2
   username: xtunes
   password: xtunes
   pool: 5

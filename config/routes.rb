@@ -13,6 +13,7 @@ Xtunes::Application.routes.draw do
   resources :artists
   resources :albums
   resources :genres
+  resources :mixtapes
 
 
   # The priority is based upon order of creation:

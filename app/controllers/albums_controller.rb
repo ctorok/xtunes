@@ -1,23 +1,19 @@
 class AlbumsController < ApplicationController
   
   def create
-  @album = Album.new(params[:album])
-
-# @album.genres = (params[:genres].present? ? params[:genres] : [])
-
-
-
+    @album = Album.new(params[:album])
+    # @album.genres = (params[:genres].present? ? params[:genres] : [])
     if @album.save
       redirect_to albums_path
-    else
-       render action: "new"
+      else
+      render action: "new"
     end
   end
 
   def destroy
     @album = Album.find(params[:id])
     @album.destroy
-      redirect_to albums_path
+    redirect_to albums_path
   end
 
   def edit
@@ -29,7 +25,6 @@ class AlbumsController < ApplicationController
     @artists = Artist.all
     @songs = Song.all
     @genres = Genre.all
-    
   end
 
   def new
@@ -42,11 +37,11 @@ class AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
-      if @album.update_attributes(params[:album])
-        redirect_to albums_path #removed :notice
+    if @album.update_attributes(params[:album])
+      redirect_to albums_path #removed :notice
       else
-        render action: "edit" 
-      end
+      render action: "edit" 
+    end
   end
 end
 

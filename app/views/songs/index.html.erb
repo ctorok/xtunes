@@ -7,7 +7,6 @@
   <h1>Songs I can purchase</h1>
 <% end %>
 
-
   <table>
     <tr>
       <th>Name</th> 
@@ -38,10 +37,6 @@
             <td><%= song.price %></td>
             
               <td><%= audio_tag song.audiofile, :controls => true %></td>
-            
-
-
-
 
             <td><%= link_to 'Show', song %></td>
             <% if can? :update, @song %>

@@ -1,41 +1,26 @@
-<%= form_for(@album) do |f| %>
-  <% if @album.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
-
-      <ul>
-      <% @album.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @album, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :photo %><br />
-    <%= f.text_field :photo %>
+  <div class="control-group">
+    <%= f.label :photo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :photo, :class => 'text_field' %>
+    </div>
   </div>
-   <div class="field">
-    <%= f.label :year_released %><br />
-    <%= f.text_field :year %>
-  </div>
-  <div class="field">
-    <%= f.label :genre %><br />
-    <%= collection_select :album, :genre_ids, Genre.all, :id, :name, {}, {:multiple => true } -%>
+  <div class="control-group">
+    <%= f.label :year, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :year, :class => 'number_field' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :artist %><br />
-    <%= collection_select :album, :artist_ids, Artist.all, :id, :name, {}, {:multiple => true } -%>
-  </div>
-  
-  <br>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                albums_path, :class => 'btn' %>
   </div>
 <% end %>

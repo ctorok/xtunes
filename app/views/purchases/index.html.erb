@@ -1,39 +1,51 @@
 <% if !current_user %>
-  <h1>Listing purchases</h1>
+  <% title = "Listing purchases" %>
   <% else %>
-  <h1>My purchases</h1>
+  <% title = "My purchases" %>
 <% end %>
+<%- model_class = Purchase -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => title %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Song name</th>
+      <th><%= model_class.human_attribute_name(:price_paid) %></th>
+      <% if !current_user %>
+        <th>Purchased by</th>
+      <% end %>
+      <th>Mixtape</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchases.each do |purchase| %>
+      <tr>
+        <% s=Song.find(purchase.song_id) %>
+        <td><%= s.name %></td>
+        <td><%= number_to_currency(purchase.price_paid, :precision => 2) %></td>
+        <% if !current_user %>
+          <% u=User.find(purchase.user_id) %>
+          <td><%= u.name %></td>
+        <% end %>
 
-
-<table>
-  <tr>
-    <th>Song name</th>
-    <th>Purchased by</th>
-    <th>Price Paid</th>
- 
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @purchases.each do |purchase| %>
-  <tr>
-
-    <% s=Song.find(purchase.song_id) %>
-    <td><%= s.name %></td>
-    
-     <% u=User.find(purchase.user_id) %>
-     <td><%= u.name %></td>
-     
-     <td><%= purchase.price_paid %></td>
-  
-    <td><%= link_to 'Show', purchase %></td>
-    <td><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
-    <td><%= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+        <td>–</td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_purchase_path(purchase), :class => 'btn btn-mini' %>
+          <%= link_to t('.delete', :default => t("helpers.links.delete")),
+                      purchase_path(purchase),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New purchase', new_purchase_path %>
+<% if current_user.user_type == "A" %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_purchase_path,
+            :class => 'btn btn-primary btn-mini' %>
+<% end %>

@@ -29,8 +29,7 @@ class Purchase < ActiveRecord::Base
     u = Purchase.where("user_id = ?", session[:user_id])
     s = Purchase.where("song_id = ?", params[:song_id])
     if u == @purchase.user_id && s == @purchase.song_id
-       # redirect_to songs_path, :notice => 
-       raise "You have already purchased this song!"
+       redirect_to songs_path, :notice => "You have already purchased this song!"
     end
   end
 

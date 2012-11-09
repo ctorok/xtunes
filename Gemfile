@@ -12,6 +12,7 @@ gem 'pg'
 gem 'thin'
 gem 'cancan'
 gem 'sass-twitter-bootstrap-rails', '~> 1.0.2'
+gem 'ransack'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

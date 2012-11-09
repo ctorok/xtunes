@@ -32,10 +32,10 @@
     <% end %> <!-- end the if -->
 
 
-    <% if can? :update, :all %> <!-- only show if I have managing role -->
+    <% if can? :update, :all %> <!-- only show if I am an admin -->
         <div class="nav">
           <ul >
-            <%= create_nav_item('Home', songs_path) %> |
+            <%= create_nav_item('Home', sessions_path) %> |
             <%= create_nav_item('Manage Songs', songs_path) %> |
             <%= create_nav_item('Manage Genres', genres_path) %> |
             <%= create_nav_item('Manage Albums', albums_path) %> |

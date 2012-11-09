@@ -11,18 +11,21 @@ class SongsController < ApplicationController
     if current_user && current_user.user_type != "A"
       #get user's purchased songs, only the ids; if p returns blank array, then no purchases
       p = Purchase.where("user_id = ?", session[:user_id]).collect(&:song_id)
+
       if p != []
+
         songs_table = Arel::Table.new(:songs)
         # the below will have the songs that the user has not purchased!
         @songs = Song.where(songs_table[:id].not_in p)
-          # raise @songs.inspect
+        # raise @songs.inspect
       elsif current_user && current_user.user_type == "A"
         @songs = Song.all #order(:name)   #get all songs, ordered alpha by name
       end
+      # raise @songs.inspect
   end
 
-    @search = Song.search(params[:q])
-    @songs = @search.result
+    # @search = Song.search(params[:q])
+    # @songs = @search.result
   end
 
   def show

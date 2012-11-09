@@ -6,21 +6,23 @@ class SongsController < ApplicationController
   
   def index
     
-    # @artists = Artist.order(:name)
-    # @albums = Album.order(:name)
-    # raise current_user.inspect
-
+     session[:user_id_session] = session[:user_id]
+     
     if current_user && current_user.user_type != "A"
-      #get user's purchased songs, only the ids
+      #get user's purchased songs, only the ids; if p returns blank array, then no purchases
       p = Purchase.where("user_id = ?", session[:user_id]).collect(&:song_id)
-       # raise p.inspect
-      songs_table = Arel::Table.new(:songs)
-      # the below will have the songs that the user has not purchased!
-      @songs = Song.where(songs_table[:id].not_in p)
-      # raise @songs.inspect
-    elsif current_user && current_user.user_type = "A"
-      @songs = Song.order(:name)   #get all songs, ordered alpha by name
-    end
+      if p != []
+        songs_table = Arel::Table.new(:songs)
+        # the below will have the songs that the user has not purchased!
+        @songs = Song.where(songs_table[:id].not_in p)
+          # raise @songs.inspect
+      elsif current_user && current_user.user_type == "A"
+        @songs = Song.all #order(:name)   #get all songs, ordered alpha by name
+      end
+  end
+
+    @search = Song.search(params[:q])
+    @songs = @search.result
   end
 
   def show

@@ -2,11 +2,12 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase = Purchase.new(params[:purchase])
-    # raise params.inspect
     @purchase.price_paid = Song.find(params[:song_id]).price
     @purchase.user_id = session[:user_id]
+    session[:user_id_purchase] = session[:user_id]
     @purchase.song_id = params[:song_id]
-    # raise @purchase.inspect
+    session[:song_id_purchase] = params[:song_id]
+   
     if @purchase.save 
       redirect_to songs_path, :notice => "You purchased '#{Song.find(params[:song_id]).name}'."
     else

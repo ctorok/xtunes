@@ -1,7 +1,7 @@
-<div class="songs">
+<div class="songsheader">
   <!-- There will be two types of listings. One for the admin and guest, with ALL songs, and one for the logged in user, who will see all songs MINUS the ones they purchased -->
 
-<% if !current_user || current_user.user_type == "A"%>
+<% if !current_user || current_user.user_type == "A" %>
   <h1>Listing all songs</h1>
   <% else %>
   <h1>Songs I can purchase</h1>
@@ -25,34 +25,33 @@
   </table>
 </div>
     <div class="songs">
-      <table>
+      <ul id="songs">
         <% @songs.each do |song| %>
-          <tr>
-            <td><%= song.name %></td>
-            <td>
+          <span style="float: left;">
+            <%= content_tag_for :li, song do %>
+              <%= link_to song.name, "" %>
               <% song.artists.each do |a|%>
-              <%= a.name %>
-              <% end %>
-            </td>
-            <td>
+                <%= a.name %>
+              <% end %>  
               <% song.albums.each do |a|%>
-              <%= a.name %>
+                <%= a.name %>
+              <% end %>  
+              <%= number_to_currency(song.price) %>
+              <%= audio_tag song.audiofile, :controls => true %>
+            <% end %>    
+            <span class="btns">
+              <%= link_to 'Show', song %>
+              <% if can? :update, @song %>
+                <%= link_to 'Edit', edit_song_path(song) %>
+                <%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
-            </td>
-            <td><%= song.price %></td>
-            
-              <td><%= audio_tag song.audiofile, :controls => true %></td>
-
-            <td><%= link_to 'Show', song %></td>
-            <% if can? :update, @song %>
-              <td><%= link_to 'Edit', edit_song_path(song) %></td>
-              <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-            <td><%= button_to 'Purchase', purchases_path(song_id: song), :class => "btn btn-mini btn-success" %></td>
-          </tr>
+              <%= button_to 'Purchase', purchases_path(song_id: song), :class => "btn btn-mini btn-success" %>
+            </span>
+          </span>
         <% end %>
-  </table>
+      </ul>
   <br />
-</div>
+  </div>
 
 <%= link_to 'New song', new_song_path %>
+

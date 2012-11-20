@@ -55,12 +55,12 @@ a {
 
 
   ul li {
-  display: inline-block;
-  color: #FFF;
-}
+    display: inline-block;
+    color: #FFF;
+  }
 }
 
-.page-header, .songs h1 {
+.page-header, .songsheader h1 {
   border: solid 1px #777;
   border-radius: 10px;
   padding-left: 10px;
@@ -68,20 +68,35 @@ a {
   margin-bottom: 20px;
 }
 
-.songs {
-  margin: 20px 0;
-  padding: 7px 12px;
+.songs { 
+    margin: 20px 0;
+    padding: 7px 12px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: block;
+    float: left;
  
   h2 { 
     margin: 0; 
   }
 
-  td {padding-right: 10px;}
-  th {padding-right: 130px;}
+
 }
 
+ .songsheader {
+    margin: 20px 0;
+    padding: 7px 12px;
+    /*border: 1px solid black;*/
+    /*display: block;*/
+    td {padding-right: 10px;}
+    th {padding-right: 130px;}
+  }
 
-.player {
+.btns {
+  font-size: 11px;
+}
+
+/*.player {
     display: block;
     position: absolute;
     height: 30px;
@@ -96,11 +111,15 @@ a {
     background: -moz-linear-gradient(top, rgba(174, 185, 196, .9), rgba(152, 164, 176, .9) 50%, rgba(132, 145, 159, .9) 50.1%, rgba(110, 124, 140, .9));
     background: linear-gradient(top, rgba(174, 185, 196, .9), rgba(152, 164, 176, .9) 50%, rgba(132, 145, 159, .9) 50.1%, rgba(110, 124, 140, .9));
     cursor: default;
-}
+}*/
 
 audio {
   background: rgba(42, 42, 42, .01);
   border-radius: 5px;
   height: 30px;
   width: 230px;
+}
+
+ul li {
+  display: inline-block;
 }
